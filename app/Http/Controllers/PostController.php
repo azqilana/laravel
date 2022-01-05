@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\kategory;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use App\Models\kategory;
 
 class PostController extends Controller
 {
@@ -14,11 +14,17 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index(){
+        // $s=request('keyword');
+        // var_dump($s);
+        // die();
+        $posts = Post::latest();
+        if (request('keyword')) {
+            $posts->where('judul','like','%'.request('keyword').'%');
+        }
         return view('posts',['judul'=>'Blog',
         // 'posts'=> Post::all()
-        'posts'=> Post::with(['user','kategory'])->latest()->get()
+        'posts'=> $posts->get()
         ]);
     }
     public function post(Post $post){

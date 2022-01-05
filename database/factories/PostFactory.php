@@ -17,7 +17,8 @@ class PostFactory extends Factory
             'judul'=>$this->faker->sentence(mt_rand(1,5)),
             'slug'=>$this->faker->slug(),
             'excerpt'=>$this->faker->paragraph(),
-            'isipost'=>$this->faker->paragraph(mt_rand(20,200)),
+            'isipost'=>'<p>'.implode('</p><p>',$this->faker->paragraphs(mt_rand(5,10))).'</p>',
+            // 'isipost'=>collect($this->faker->paragraphs(mt_rand(5,10)))->map(fn($p)=>"<p>$p</p>")->implode(''),
             'kategory_id'=>mt_rand(1,3),
             'user_id'=>mt_rand(1,5),
         ];
