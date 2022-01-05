@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\PostController;
+
 use App\Models\kategory;
 use Illuminate\Support\Facades\Route;
-use App\Models\post;
-use App\Models\User;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,19 +46,5 @@ Route::get('/kategories', function (kategory $kategory) {
     ]
     );
 });
-Route::get('/penulis/{penulis:name}', function (User $penulis) {
-    return view('posts',[
-        'judul'=>'User Post',
-        'posts'=>$penulis->post->load('kategory','user'),
-    ]
-    );
-});
-Route::get('/kategories/{kategory:slug}', function (kategory $kategory) {
-    return view('posts',[
-        'judul'=>'kategory',
-        'name'=>$kategory->name,
-        'posts'=>$kategory->posts->load('kategory','user'),
-        'kategory'=>$kategory->name,
-    ]
-    );
-});
+Route::get('/login', [LoginController::class,'index']);
+

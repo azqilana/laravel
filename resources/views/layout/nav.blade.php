@@ -22,6 +22,11 @@
                                 <a class="nav-link {{ ($judul=='Kategory Post')? 'active' : ''}}" href="/kategories">Kategory</a>
                             </li>
                         </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="/login" class="nav-link bi bi-box-arrow-in-right"> Login</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

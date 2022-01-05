@@ -10,7 +10,7 @@
             <th><a style="font-size: large">{{ $posts->judul }}</a></th>
         </tr>
         <tr>
-        <th><p>Dari <a href="/penulis/{{ $posts->user->name }}">{{ $posts->user->name }}</a> In <a href="/kategories/{{ $posts->kategory->slug }}" style="font-size: large">{{ $posts->kategory->name }}</a></p></th>
+        <th><p>Dari <a href="/blog?penulis={{ $posts->user->name }}">{{ $posts->user->name }}</a> In <a href="/blog?kategories={{ $posts->kategory->slug }}" style="font-size: large">{{ $posts->kategory->name }}</a></p></th>
         </tr>
         <tr>
             <th><a>{{ $posts->penulis }}</a></th>

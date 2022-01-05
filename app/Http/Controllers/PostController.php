@@ -18,13 +18,10 @@ class PostController extends Controller
         // $s=request('keyword');
         // var_dump($s);
         // die();
-        $posts = Post::latest();
-        if (request('keyword')) {
-            $posts->where('judul','like','%'.request('keyword').'%');
-        }
+        // $posts = ;
         return view('posts',['judul'=>'Blog',
         // 'posts'=> Post::all()
-        'posts'=> $posts->get()
+        'posts'=> Post::latest()->filter(request(['keyword','kategories','penulis']))->paginate(7)
         ]);
     }
     public function post(Post $post){

@@ -2,13 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class kategory extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    
+    public function scopeFilter($query, array $filter){
+        $query->when($filter['keyword'] ?? false, function($query, $search){
+            $query->where('judul','like','%'.$search.'%')
+                ->orWhere('isipost','like','%'.$search.'%');
+        });
+    }
 
     public function posts(){
         return $this->hasMany(Post::class);
