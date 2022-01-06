@@ -9,7 +9,7 @@
         <table>
             @foreach ($kategory as $k)   
         <tr>
-            <th><a href="kategories/{{ $k->slug }}" style="font-size: large">{{ $k->name }}</a></th>
+            <th><a href="/blog?kategories={{ $k->slug }}" style="font-size: large">{{ $k->name }}</a></th>
         </tr>
             @endforeach
     </table>
