@@ -23,9 +23,24 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav">
+                        @auth()
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ auth()->user()->name }}</a>
+        <ul class="dropdown-menu">
+        <li><a class="dropdown-item bi bi-layout-text-sidebar-reverse" href="/dashboard"> My Dashboard</a></li>
+        <li>
+        <form action="/logout" method="post">
+            @csrf
+            <button class="dropdown-item bi bi-box-arrow-right"> Keluar</button>
+        </form>
+        </li>
+        </ul>
+    </li>
+                        @else
                             <li class="nav-item">
                                 <a href="/login" class="nav-link bi bi-box-arrow-in-right"> Login</a>
                             </li>
+                        @endauth
                         </ul>
                     </div>
                 </div>
