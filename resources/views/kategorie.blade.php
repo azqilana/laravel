@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col">
         <table>
-            @foreach ($kategory as $k)   
+            @foreach ($kategory as $k)
         <tr>
             <th><a href="/blog?kategories={{ $k->slug }}" style="font-size: large">{{ $k->name }}</a></th>
         </tr>

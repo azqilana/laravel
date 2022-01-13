@@ -1,6 +1,7 @@
 
 @extends('layout.main')
-@section('container')
+@extends('layout.nav')
+
     <h1>Halaman Post</h1>
 <div class="container">
     <div class="row">

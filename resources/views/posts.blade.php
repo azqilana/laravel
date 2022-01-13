@@ -24,7 +24,7 @@
             <div class="card-body text-center">
                 <h5 class="card-title">{{ $posts[0]->judul }}</h5>
                 <small>
-                <p>Dari <a href="/blog?penulis={{ $posts[0]->user->name }}">{{ $posts[0]->user->name }}</a> in <a href="/blog?kategories={{ $posts[0]->kategory->slug }}" style="font-size: large">{{ $posts[0]->kategory->name }}</a><a> {{ $posts[0]->created_at->diffForHumans() }}</a></p>
+                <p>Dari <a href="/blog?penulis={{ $posts[0]->user->name }}">{{ $posts[0]->user->name }}</a> In <a href="/blog?kategories={{ $posts[0]->kategory->slug }}" style="font-size: large">{{ $posts[0]->kategory->name }}</a><a> {{ $posts[0]->created_at->diffForHumans() }}</a></p>
                 </small>
                 <p class="card-text">{{ $posts[0]->excerpt}}</p>
                 <p class="card-text"><small class="text-muted">Last updated {{ $posts[0]->created_at->diffForHumans() }}</small></p>
@@ -39,10 +39,10 @@
                 {{-- <img src="..." class="card-img-top" alt="..."> --}}
                 <div class="card-body">
                     <h5 class="card-title">{{ $p->judul }}</h5>
-                    <p>Dari <a href="/blog?penulis={{ $p->user->name }}">{{ $p->user->name }}</a><br>From <a href="/blog?kategories={{ $posts[0]->kategory->slug }}" style="font-size: large">{{ $posts[0]->kategory->name }}</a></p>
+                    <p>Dari <a href="/blog?penulis={{ $p->user->name }}">{{ $p->user->name }}</a><br>In <a href="/blog?kategories={{ $posts[0]->kategory->slug }}" style="font-size: large">{{ $posts[0]->kategory->name }}</a></p>
                     <p class="card-text">{{ $p->excerpt }}</p>
                     <a href="/post/{{ $p->slug }}" class="btn btn-primary">Read More</a>
-                </div> 
+                </div>
                 </div>
             </div>
     @endforeach
