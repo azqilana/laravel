@@ -20,7 +20,11 @@
     </div>
     @if ($posts->count())
         <div class="card mb-3" >
-            {{-- <img src="https://api.unsplash.com/photos?query={{ {{ $posts[0]->kategories->name }} }}" class="card-img-top" alt="..."> --}}
+                @if ($posts[0]->gambar)
+                <img src="{{ asset('storage/'.$posts[0]->gambar) }}" class="card-img-top" width="1000" height="400" alt="{{ $posts[0]->kategory->slug }}">
+                @else
+                <img src="/img/{{ $posts[0]->kategory->slug }}.jpg" class="card-img-top" width="1000" height="400" alt="{{ $posts[0]->kategory->slug }}">
+                @endif
             <div class="card-body text-center">
                 <h5 class="card-title">{{ $posts[0]->judul }}</h5>
                 <small>
@@ -36,10 +40,14 @@
     @foreach ($posts->skip(1) as $p)
             <div class="col-md-4">
                 <div class="card">
-                {{-- <img src="..." class="card-img-top" alt="..."> --}}
+                @if ($p->gambar)
+                <img src="{{ asset('storage/'.$p->gambar) }}" class="card-img-top" height="200" alt="{{ $p->kategory->slug }}">
+                @else
+                <img src="/img/{{ $p->kategory->slug }}.jpg" class="card-img-top" height="200" alt="{{ $p->kategory->slug }}">
+                @endif
                 <div class="card-body">
                     <h5 class="card-title">{{ $p->judul }}</h5>
-                    <p>Dari <a href="/blog?penulis={{ $p->user->name }}">{{ $p->user->name }}</a><br>In <a href="/blog?kategories={{ $posts[0]->kategory->slug }}" style="font-size: large">{{ $posts[0]->kategory->name }}</a></p>
+                    <p>Dari <a href="/blog?penulis={{ $p->user->name }}">{{ $p->user->name }}</a><br>In <a href="/blog?kategories={{ $p->kategory->slug }}" style="font-size: large">{{ $p->kategory->name }}</a></p>
                     <p class="card-text">{{ $p->excerpt }}</p>
                     <a href="/post/{{ $p->slug }}" class="btn btn-primary">Read More</a>
                 </div>

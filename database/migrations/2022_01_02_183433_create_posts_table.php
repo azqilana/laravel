@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreatePostsTable extends Migration
 {
     /**
-     * Run the migrations. 
+     * Run the migrations.
      *
-     * @return void 
+     * @return void
      */
     public function up()
     {
@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id');
             $table->string('judul');
             $table->string('slug')->unique();
+            $table->string('gambar')->nullable();
             $table->text('excerpt');
             $table->text('isipost');
             $table->timestamp('tanggal_pembuatan')->nullable();

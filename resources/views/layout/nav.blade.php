@@ -10,16 +10,16 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link {{ ($judul=='Home')? 'active' : ''}}" aria-current="page" href="/">Home</a>
+                                <a class="nav-link {{ Request::is('/') ? 'active fw-bold' : '' }}" aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($judul=="About")? 'active' : ''}}" href="/about">About</a>
+                                <a class="nav-link {{ Request::is('about') ? 'active fw-bold' : '' }}" href="/about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($judul=='Blog')? 'active' : ''}}" href="/blog">Blog</a>
+                                <a class="nav-link {{ Request::is('blog') ? 'active fw-bold' : '' }}" href="/blog">Blog</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($judul=='Kategory Post')? 'active' : ''}}" href="/kategories">Kategory</a>
+                                <a class="nav-link {{ Request::is('kategories') ? 'active fw-bold' : '' }}" href="/kategories">Kategory</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav">
@@ -36,15 +36,15 @@
         </li>
         </ul>
     </li>
-                        @else
-                            <li class="nav-item">
-                                <a href="/login" class="nav-link bi bi-box-arrow-in-right"> Login</a>
-                            </li>
-                        @endauth
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    @else
+    <li class="nav-item">
+        <a href="/login" class="nav-link {{ Request::is('login') ? 'active fw-bold' : '' }} bi bi-box-arrow-in-right"> Login</a>
+    </li>
+    @endauth
+    </ul>
+    </div>
+        </div>
+        </nav>
         </div>
     </div>
 </div>

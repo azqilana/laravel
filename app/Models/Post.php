@@ -5,15 +5,18 @@ namespace App\Models;
 use PhpParser\Node\Expr\Isset_;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
     use HasFactory;
+    use Sluggable;
+
     // protected $fillable = ['judul','excerpt','isipost'];
     protected $guarded = ['id'];
     protected $with=['user','kategory'];
-    
+
     public function scopeFilter($query, array $filter){
         $query->when($filter['keyword']??false,function($query,$search){
         return $query->where('judul','like','%'.$search.'%')
@@ -35,5 +38,17 @@ class Post extends Model
     }
     public function User(){
         return $this->belongsTo(User::class);
+    }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+        public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'judul'
+            ]
+        ];
     }
 }
